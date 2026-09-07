@@ -489,6 +489,7 @@ struct main_content_extractor {
         full_text = "".join(content_parts).strip()
         return full_text, sections
     }
+
     struct extraction_result {
         string text_content
         page_metadata metadata
@@ -681,6 +682,7 @@ Also provide a comma-separated ranking of the most relevant result indices (0-ba
             reranked_indices=reranked_indices
         }
     }
+
     struct llm_summary_result {
         string summary
         list<string> key_findings

@@ -26,6 +26,7 @@ func generate_s_vocab_code(string vocab_txt_path, string output_s_path) bool {
     __sys_fclose(fd)
     true
 }
+
 func split_vocab_into_segments(string vocab_txt_path, string output_dir) bool {
     true
 }

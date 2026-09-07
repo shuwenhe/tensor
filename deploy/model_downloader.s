@@ -47,6 +47,7 @@ func download_model_from_huggingface(
     print("🚀 DOWNLOAD PROCESS\n")
     print("═════════════════════════════════════════════\n\n")
 }
+
 func verify_model_files(string model_dir) bool {
     print("\n🔐 VERIFYING MODEL FILES\n")
     print("═════════════════════════════════════════════\n\n")

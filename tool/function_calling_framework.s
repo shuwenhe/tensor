@@ -132,11 +132,13 @@ struct user_message {
     content: string | list<content_block>
     list<tool_call_result_block> tool_results
 }
+
 struct tool_call_result_block {
     string tool_call_id
     any content
     is_error: bool = false
 }
+
 struct execution_summary {
     int total_tool_calls_initiated
     int total_tool_calls_completed
@@ -147,6 +149,7 @@ struct execution_summary {
     float avg_duration_per_call_ms
     int retry_count
 }
+
 struct tool_registry {
     tools: map<string, tool_definition>
     executors: map<string, tool_executor>
@@ -237,6 +240,7 @@ struct tool_registry {
         }
     }
 }
+
 struct registry_statistics {
     int total_tools
     categories: map<string, int>
@@ -248,12 +252,14 @@ interface tool_executor {
     get_name()
     validate_arguments(map args<string, any>, schema: parameter_schema)
 }
+
 struct validation_report {
     bool is_valid
     list<string> missing_params
     invalid_params: list<map<string, string>>
     list<string> warnings
 }
+
 struct function_calling_engine {
     tool_registry registry
     any llm_client
@@ -542,6 +548,7 @@ struct function_calling_engine {
         }
     }
 }
+
 struct conversation_summary {
     int total_messages
     int user_messages
@@ -550,6 +557,7 @@ struct conversation_summary {
     set<string> unique_tools_used
     float success_rate
 }
+
 struct call_tracker {
     list<tool_call> history
     total_calls: int = 0
@@ -672,6 +680,7 @@ function create_builtin_file_operations_tool() {
     executor = file_operations_executor()
     return defn, executor
 }
+
 struct web_search_executor implements tool_executor {
     get_name() { return "web_search" }
     validate_arguments(args, schema) {
@@ -691,6 +700,7 @@ struct web_search_executor implements tool_executor {
         }
     }
 }
+
 struct code_interpreter_executor implements tool_executor {
     get_name() { return "code_interpreter" }
     validate_arguments(args, schema) {
@@ -706,6 +716,7 @@ struct code_interpreter_executor implements tool_executor {
         }
     }
 }
+
 struct file_operations_executor implements tool_executor {
     get_name() { return "file_operations" }
     validate_arguments(args, schema) {
@@ -799,6 +810,7 @@ async function test_function_calling() {
     print("\n✅ all function calling tests passed!")
     return true
 }
+
 struct mock_llm_client_for_fc {
     call_count: int = 0
     async chat.completions.create(model, messages, tools, tool_choice, temperature, max_tokens) {
@@ -834,6 +846,7 @@ struct mock_llm_client_for_fc {
         }
     }
 }
+
 struct llm_raw_response {
     string finished_reason
     choices: list<map<string, any>>

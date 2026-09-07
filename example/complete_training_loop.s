@@ -516,6 +516,7 @@ func run_validation(
     model = train_mode(model)
     total_loss / float(total_samples)
 }
+
 func generate_validation_samples(
     transformer_model model,
     training_config cfg,
@@ -649,6 +650,7 @@ func make_tensor([]float data, []int shape, bool requires_grad) tensor:
         requires_grad: requires_grad,
         grad: none,
     }
+
 func copy_int_shape([]int shape) []int:
     []int out = make([]int, len(shape))
     int i = 0
@@ -1110,6 +1112,7 @@ func print_config_pretty(training_config cfg):
     for name, value in configs {
         printf("  %-20s %s\n", name, value)
     }
+
 func log_model_summary(logger lg, transformer_model model, training_config cfg):
     """Log model architecture summary"""
     log_scalar(*lg, "config/neurx/vocab_size", float(cfg.vocab_size), 0, {})

@@ -60,6 +60,7 @@ func extract_tool_calls(self, str model_output, ParserRequest request) . Extract
         tool_calls: tool_calls,
         content content
     }
+
     func extract_tool_calls_streaming(
         self,
         previous_text: str,

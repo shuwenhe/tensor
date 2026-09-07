@@ -7,6 +7,7 @@ use neurx.runtime.io.{
     runtime_read_text_file,
     runtime_write_text_file
 }
+
 struct download_config {
     string model_name
     string model_dir
@@ -136,6 +137,7 @@ func download_file(
     log_message(config, "   Destination: " + file_path)
     return true
 }
+
 func verify_downloaded_files(download_config config, []model_file_info files) (int, int) {
     int verified = 0
     int failed = 0
